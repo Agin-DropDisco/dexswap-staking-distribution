@@ -1,0 +1,13 @@
+{
+    "mainnet": {
+    "factory": "0x0000000000000000000000000000000000000000"
+    },
+    "rinkeby": {
+      "factory": "0x86F001615E0025eFD1A225ea51CEff47fE332bbe"
+    },
+    "matic": {
+        "factory": "0x6b2C3EB9C16EcCcD7b6De9AC2DD35805D0DC673C"
+
+    }
+  }
+  

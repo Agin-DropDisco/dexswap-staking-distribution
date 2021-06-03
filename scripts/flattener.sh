@@ -1,0 +1,4 @@
+npx truffle-flattener contracts/DEXswapERC20StakingRewardsDistributionFactory.sol > contracts/.flattened/DEXswapERC20StakingRewardsDistributionFactory.sol
+npx truffle-flattener contracts/SwapperRewardTokensValidator.sol > contracts/.flattened/SwapperRewardTokensValidator.sol
+npx truffle-flattener contracts/SwapperStakableTokenValidator.sol > contracts/.flattened/SwapperStakableTokenValidator.sol
+

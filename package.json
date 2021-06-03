@@ -1,0 +1,60 @@
+{
+    "name": "dexswap-staking-distribution",
+    "version": "0.1.6",
+    "description": "DEXswap-specific contracts suite to bootstrap staking-based reward campaigns (for liquidity mining).",
+    "files": [
+        "/*.sol",
+        "interfaces/*.sol",
+        "/build/*.json"
+    ],
+    "scripts": {
+        "deploy:rinkeby": "hardhat deploy --network rinkeby --factory-address 0x9953f711074B8C4dC4BB3ba5a731f06dADD6cb93 --verify",
+        "deploy:matic": "hardhat deploy --network matic --factory-address 0xCaF1598bda4643D84890d4ab8f2735C44A48a6C3",
+        "deploy:moonalpha": "hardhat deploy --network moonalpha  --factory-address ",
+        "lint:eslint": "eslint \"test/**/*.js\"",
+        "lint:prettier": "prettier -l contracts/**/*.sol && prettier -l test/**/*.js",
+        "lint:commit-message": "commitlint -e",
+        "lint": "yarn lint:eslint && yarn lint:prettier",
+        "test": "hardhat test",
+        "test:coverage": "hardhat coverage",
+        "test:gasreport": "cross-env GAS_REPORT_ENABLED=true hardhat test",
+        "compile": "rimraf ./build && rimraf ./artifacts && hardhat compile && mkdirp build && copyfiles -f -E ./artifacts/contracts/*.sol/*.json ./build && rimraf ./build/*.dbg.json",
+        "prepack": "yarn compile && copyfiles -f -E ./contracts/*.sol ./ && copyfiles -f -E ./contracts/interfaces/*.sol ./interfaces",
+        "postpack": "rimraf ./*.sol",
+        "prepare:flat": "mkdir contracts/.flattened",
+        "flattener": "./scripts/flattener.sh"
+
+    },
+    "author": "Agin DropDisco || gin.dropdisco@gmail.com",
+    "license": "GPL-3.0",
+    "dependencies": {
+        "@openzeppelin/contracts": "^4.0.0",
+        "dexswap-registry": "git://github.com/Agin-DropDisco/dexswap-registry.git#0.1.6",
+        "dexswap-core": "git://github.com/Agin-DropDisco/dexswap-core.git#0.1.6",
+        "erc20-staking-rewards-distribution-contracts": "^1.0.2"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "@nomiclabs/hardhat-etherscan": "^2.1.1",
+        "@nomiclabs/hardhat-truffle5": "^2.0.0",
+        "@nomiclabs/hardhat-web3": "^2.0.0",
+        "babel-eslint": "^10.1.0",
+        "bn.js": "^5.1.3",
+        "chai": "^4.2.0",
+        "copyfiles": "^2.4.1",
+        "cross-env": "^7.0.3",
+        "dotenv": "^8.2.0",
+        "eslint": "^7.17.0",
+        "hardhat": "^2.0.7",
+        "hardhat-gas-reporter": "^1.0.4",
+        "husky": "^4.3.7",
+        "mkdirp": "^1.0.4",
+        "prettier": "^2.1.2",
+        "prettier-plugin-solidity": "^1.0.0-beta.3",
+        "rimraf": "^3.0.2",
+        "solhint-plugin-prettier": "^0.0.5",
+        "solidity-coverage": "^0.7.13",
+        "web3": "^1.3.1"
+    }
+}
